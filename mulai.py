@@ -54,7 +54,7 @@ if uploaded_file:
     
     st.write("---")
     #heatmap korelasi dataset
-    dataset_corr = anime_df.corr()
+    dataset_corr = anime_df.corr(numeric_only=True)
     fig = plt.figure()
     plt.title("Correlation Heatmap", fontsize=20)
     sns.heatmap(dataset_corr, annot=True)
