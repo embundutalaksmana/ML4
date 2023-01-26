@@ -136,13 +136,11 @@ if uploaded_file:
             return result_df.sort_values('Rating', ascending=False)
 
     anime_title = st.text_input('Enter anime title:').capitalize()
-    highest_rating = st.checkbox('Sort by highest rating')
-    similarity = st.checkbox('Show similarity')
 
     if st.button('Submit'):
         try:
             st.text("Hasil")
-            result = genre_recommendations(anime_title, highest_rating, similarity)
+            result = genre_recommendations(anime_title)
             st.dataframe(result)
         except:
             st.error("Anime not found in the database ()")
