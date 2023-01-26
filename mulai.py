@@ -135,7 +135,8 @@ if uploaded_file:
             
             return result_df.sort_values('Rating', ascending=False)
 
-    anime_title = st.text_input('Enter anime title:').capitalize()
+    anime_title = st.text_input('Enter anime title: ').capitalize()
+    st.text("Saran: akan lebih baik jika mencari anime yang memiliki series banyak, seperti Naruto ")
 
     if st.button('Submit'):
         try:
