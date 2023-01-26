@@ -140,7 +140,7 @@ if uploaded_file:
     if st.button('Submit'):
         try:
             st.text("Hasil")
-            result = genre_recommendations(anime_title)
+            result = genre_recommendations(anime_title, highest_rating=True, similarity=True)
             st.dataframe(result)
         except:
             st.error("Anime not found in the database ()")
