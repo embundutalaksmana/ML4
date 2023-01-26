@@ -29,10 +29,13 @@ st.write("---")
 uploaded_file = st.file_uploader("File Anime csv", type=["csv"])
 if uploaded_file:
     anime_df = pd.read_csv(uploaded_file)
+    
     null_features = anime_df.columns[anime_df.isna().any()]
     anime_df[null_features].isna().sum()
     anime_df.dropna(inplace=True)
     st.dataframe(anime_df)
+
+    
     def text_cleaning(text):
         text = re.sub(r'&quot;', '', text)
         text = re.sub(r'.hack//', '', text)
@@ -42,16 +45,21 @@ if uploaded_file:
         text = re.sub(r'&amp;', 'and', text)
         
         return text
-    #EDA
+   
+     #EDA
     anime_df['name'] = anime_df['name'].apply(text_cleaning)
     st.title('Anime Types')
     type_count = anime_df['type'].value_counts()
     st.bar_chart(type_count)
     
     st.write("---")
+    #heatmap korelasi dataset
+    dataset_corr = anime_df.corr()
+    fig = plt.figure()
+    plt.title("Correlation Heatmap", fontsize=20)
+    sns.heatmap(dataset_corr, annot=True)
+    st.pyplot(fig)
     
-    
-
     #menghitung jumlah genre dalam data anime
     all_genres = defaultdict(int)
     for genres in anime_df['genre']:
