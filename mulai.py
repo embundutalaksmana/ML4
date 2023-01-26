@@ -139,13 +139,10 @@ if uploaded_file:
             
             return result_df.sort_values('Rating', ascending=False)
 
-    anime_title = st.text_input('Enter anime title: ').capitalize()
+    anime_title = st.text_input('Enter anime title: ')
     st.text("Saran: akan lebih baik jika mencari anime yang memiliki series banyak, seperti Naruto ")
 
     if st.button('Submit'):
-        try:
             st.text("Hasil")
             result = genre_recommendations(anime_title, highest_rating=True, similarity=True)
             st.dataframe(result)
-        except:
-            st.error("Anime not found in the database ()")
