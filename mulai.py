@@ -49,12 +49,8 @@ if uploaded_file:
     st.bar_chart(type_count)
     
     st.write("---")
-    #heatmap korelasi dataset
-    dataset_corr = anime_df.corr()
-    fig = plt.figure()
-    plt.title("Correlation Heatmap", fontsize=20)
-    sns.heatmap(anime_df.corr(), annot=True)
-    st.pyplot(fig)
+    
+    
 
     #menghitung jumlah genre dalam data anime
     all_genres = defaultdict(int)
